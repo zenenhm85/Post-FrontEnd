@@ -15,25 +15,6 @@ IMG FONDO
 }
 
 /*=============================================
-JD SLIDER
-=============================================*/
-
-.slide-area li{
-	position: relative;
-}
-
-.slide-text{
-	position: absolute;
-	color:#fff;
-	width:70%;
-	text-align:center;
-	left:50%;
-	transform: translate(-50%, -50%);
-	top:85%;
-	text-shadow:0px 0px 5px black;
-}
-
-/*=============================================
 SCROLL UP
 =============================================*/
 
@@ -44,27 +25,4 @@ SCROLL UP
 	height: 50px;
 	background: url(../assets/img/flecha.jpg);
 
-}
-
-/*=============================================
-ICHECK PERSONALIZADO
-=============================================*/
-
-.terminos{
-	display:none;	
-}
-
-.check{
-	display:inline-block;
-	width:22px;
-	height:22px;
-	background: url(../assets/css/plugins/blue.png);
-	background-position: 0px top;
-	vertical-align:middle;
-	margin-right:10px;
-	cursor:pointer;
-}
-
-.terminos:checked + .check{
-	background-position: -20px top;
 }
