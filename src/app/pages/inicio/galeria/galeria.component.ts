@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {GaleriaService} from '../../../services/galeria/galeria.service';
 
 declare var jQuery: any;
 declare var $: any;
@@ -9,7 +10,11 @@ declare var $: any;
   styleUrls: ['./galeria.component.css'],
 })
 export class GaleriaComponent implements OnInit {
-  constructor() {}
+  constructor(private galeriaService: GaleriaService) {
+    galeriaService.getImages().subscribe(res=>{
+      console.log("Galeria",res);
+    })
+  }
 
   ngOnInit(): void {
     /*=============================================

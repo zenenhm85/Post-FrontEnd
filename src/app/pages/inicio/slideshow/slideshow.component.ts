@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SlideshowService} from '../../../services/slideshow/slideshow.service'
 
 declare var jQuery: any;
 declare var $: any;
@@ -9,7 +10,11 @@ declare var $: any;
   styleUrls: ['./slideshow.component.css'],
 })
 export class SlideshowComponent implements OnInit {
-  constructor() {}
+  constructor(private slideshowService: SlideshowService) {
+    slideshowService.getSlideshow().subscribe(res=>{
+      console.log("Slide",res);
+    })
+  }
 
   ngOnInit(): void {
     
