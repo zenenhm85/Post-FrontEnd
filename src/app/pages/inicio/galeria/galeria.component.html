@@ -8,124 +8,14 @@
   </h2>
 
   <section class="pinterest_grid">
-    <article class="white-panel">
-      <a
-        href="assets/img/galeria/01.jpg"
-        data-toggle="lightbox"
-        data-gallery="example-gallery"
-      >
-        <img src="assets/img/galeria/01.jpg" />
-      </a>
-    </article>
+    <article class="white-panel" *ngFor="let foto of images; let ultimoIndice = last"> 
 
-    <article class="white-panel">
-      <a
-        href="assets/img/galeria/02.jpg"
-        data-toggle="lightbox"
-        data-gallery="example-gallery"
-      >
-        <img src="assets/img/galeria/02.jpg" />
+      <a href="{{foto.foto}}" data-toggle="lightbox" data-gallery="example-gallery">
+        <img src="{{foto.foto}}">
       </a>
-    </article>
 
-    <article class="white-panel">
-      <a
-        href="assets/img/galeria/03.jpg"
-        data-toggle="lightbox"
-        data-gallery="example-gallery"
-      >
-        <img src="assets/img/galeria/03.jpg" />
-      </a>
-    </article>
+      {{ ultimoIndice ? callback() : ""}}
 
-    <article class="white-panel">
-      <a
-        href="assets/img/galeria/04.jpg"
-        data-toggle="lightbox"
-        data-gallery="example-gallery"
-      >
-        <img src="assets/img/galeria/04.jpg" />
-      </a>
-    </article>
-
-    <article class="white-panel">
-      <a
-        href="assets/img/galeria/05.jpg"
-        data-toggle="lightbox"
-        data-gallery="example-gallery"
-      >
-        <img src="assets/img/galeria/05.jpg" />
-      </a>
-    </article>
-
-    <article class="white-panel">
-      <a
-        href="assets/img/galeria/06.jpg"
-        data-toggle="lightbox"
-        data-gallery="example-gallery"
-      >
-        <img src="assets/img/galeria/06.jpg" />
-      </a>
-    </article>
-
-    <article class="white-panel">
-      <a
-        href="assets/img/galeria/01.jpg"
-        data-toggle="lightbox"
-        data-gallery="example-gallery"
-      >
-        <img src="assets/img/galeria/01.jpg" />
-      </a>
-    </article>
-
-    <article class="white-panel">
-      <a
-        href="assets/img/galeria/02.jpg"
-        data-toggle="lightbox"
-        data-gallery="example-gallery"
-      >
-        <img src="assets/img/galeria/02.jpg" />
-      </a>
-    </article>
-
-    <article class="white-panel">
-      <a
-        href="assets/img/galeria/03.jpg"
-        data-toggle="lightbox"
-        data-gallery="example-gallery"
-      >
-        <img src="assets/img/galeria/03.jpg" />
-      </a>
-    </article>
-
-    <article class="white-panel">
-      <a
-        href="assets/img/galeria/04.jpg"
-        data-toggle="lightbox"
-        data-gallery="example-gallery"
-      >
-        <img src="assets/img/galeria/04.jpg" />
-      </a>
-    </article>
-
-    <article class="white-panel">
-      <a
-        href="assets/img/galeria/05.jpg"
-        data-toggle="lightbox"
-        data-gallery="example-gallery"
-      >
-        <img src="assets/img/galeria/05.jpg" />
-      </a>
-    </article>
-
-    <article class="white-panel">
-      <a
-        href="assets/img/galeria/06.jpg"
-        data-toggle="lightbox"
-        data-gallery="example-gallery"
-      >
-        <img src="assets/img/galeria/06.jpg" />
-      </a>
     </article>
   </section>
 </div>

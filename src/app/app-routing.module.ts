@@ -6,7 +6,7 @@ import { ArticuloComponent } from './pages/articulo/articulo.component';
 
 const routes: Routes = [
   {path:'', component:InicioComponent},
-  {path:'articulo', component:ArticuloComponent},
+  {path:'articulo/:id', component:ArticuloComponent},
   {path:'**', pathMatch:'full', redirectTo:''}
 ];
 

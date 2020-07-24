@@ -8,13 +8,15 @@ import {ArticulosService} from '../../../services/articulos/articulos.service';
 })
 export class ArticulosComponent implements OnInit {
 
+  articulos:any;
   constructor(private articulosService: ArticulosService) { 
-    articulosService.getArticulos().subscribe(res=>{
-      console.log("articulos",res);
-    })
+   
   }
 
   ngOnInit(): void {
+    this.articulosService.getArticulos().subscribe(res=>{
+      this.articulos = res;
+    })
   }
 
 }

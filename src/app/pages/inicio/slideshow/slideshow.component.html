@@ -6,44 +6,22 @@
   <section class="jd-slider slideshow">
     <div class="slide-inner">
       <ul class="slide-area">
-        <li>
+        <li *ngFor="let item of slides; let ultimoIndice = last">
           <div class="slide-text d-none d-lg-block">
-            <h3>Lorem ipsum.</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <h3>{{ item.titulo }}</h3>
+            <p>{{ item.descripcion }}</p>
           </div>
-          <img src="assets/img/slide/slide01.jpg" />
-        </li>
-        <li>
-          <div class="slide-text d-none d-lg-block">
-            <h3>Lorem ipsum.</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </div>
-          <img src="assets/img/slide/slide02.jpg" />
-        </li>
-        <li>
-          <div class="slide-text d-none d-lg-block">
-            <h3>Lorem ipsum.</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </div>
-          <img src="assets/img/slide/slide03.jpg" />
-        </li>
-        <li>
-          <div class="slide-text d-none d-lg-block">
-            <h3>Lorem ipsum.</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </div>
-          <img src="assets/img/slide/slide04.jpg" />
+          <img src="{{ item.imagen }}" />
+          {{ultimoIndice ? callback() : "" }}
         </li>
       </ul>
     </div>
-
     <a class="prev" href="#">
       <i class="fas fa-angle-left fa-2x text-white pl-3"></i>
     </a>
     <a class="next" href="#">
       <i class="fas fa-angle-right fa-2x text-white pr-3"></i>
     </a>
-
     <div class="controller">
       <a href="#" class="auto d-none">
         <i class="fas fa-play fa-xs"></i>
