@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UsuarioService} from '../../../services/usuario/usuario.service';
+
 
 declare var jQuery: any;
 declare var $: any;
@@ -9,7 +11,18 @@ declare var $: any;
   styleUrls: ['./formulario.component.css'],
 })
 export class FormularioComponent implements OnInit {
-  constructor() {}
+  usuario:any;
+  usuarioCreado:boolean = false;
+  usuarionoCreado = false;
+  mensaje:string = '';
+
+  constructor(private usuarioService:UsuarioService) {
+    this.usuario = {
+      usuario:null,
+      password:null,
+      email:null
+    }
+  }
 
   ngOnInit(): void {
     /*=============================================
@@ -49,6 +62,22 @@ ICHECK
     $('.icheck').iCheck({
       checkboxClass: 'icheckbox_flat-blue',
       radioClass: 'iradio_flat-blue',
+    });
+  }
+
+  guardarUsuario(){
+    this.usuarioService.crearUsuario(this.usuario).subscribe(res=>{
+      this.mensaje = res['mensaje'];      
+      if(res['status']==200){
+        this.usuarioCreado = true;
+      }
+      else{
+        this.usuarionoCreado = true;        
+      }
+      setTimeout(()=>{
+        this.usuarioCreado = false;
+        this.usuarionoCreado = false;
+      },5000)
     });
   }
 }

@@ -9,8 +9,9 @@
 
   <div class="container">
     <form
-      action="/formulario.php"
       class="bg-light p-4 needs-validation"
+      (ngSubmit)="guardarUsuario()"
+      #f="ngForm"
       novalidate
     >
       <h4 class="bg-dark text-white text-center p-2">Ingrese los datos</h4>
@@ -24,8 +25,10 @@
           class="form-control"
           placeholder="Escriba su usuario con mínimo 2 caracteres, máximo 6 caracteres sin usar números"
           minlength="2"
-          maxlength="6"
+          maxlength="10"
           pattern="(?=.*[A-Za-z]).{2,6}"
+          name="usuario"
+          [(ngModel)]="usuario.usuario"
           required
         />
 
@@ -39,10 +42,12 @@
         <input
           type="password"
           id="password"
+          name="password"
           class="form-control"
           placeholder="Escriba su contraseña con mínimo 8 caracteres y debe incluir letras en mayúscula, en minúscula y números"
           minlength="8"
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          [(ngModel)]="usuario.password"
           required
         />
 
@@ -59,6 +64,7 @@
           class="form-control"
           placeholder="Escriba su correo"
           name="email"
+          [(ngModel)]="usuario.email"
           required
         />
 
@@ -164,7 +170,12 @@
           <div class="invalid-feedback">Please fill out this field.</div>
         </label>
       </div>
-
+      <div *ngIf="usuarioCreado" class="alert alert-success" role="alert">
+        {{mensaje}}
+      </div>
+      <div *ngIf="usuarionoCreado" class="alert alert-danger" role="alert">
+        {{mensaje}}
+      </div>      
       <button type="submit" class="btn btn-primary btn-block">Enviar</button>
     </form>
   </div>
