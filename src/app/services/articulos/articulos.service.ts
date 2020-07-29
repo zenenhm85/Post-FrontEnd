@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Ruta} from '../../config'
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +8,9 @@ import {HttpClient} from '@angular/common/http';
 export class ArticulosService {
 url:string;
   constructor(private http: HttpClient) {
-    this.url = 'assets/json/articulos.json';
+    this.url = Ruta.url;
    }
    getArticulos(){
-     return this.http.get(this.url);
+     return this.http.get(`${this.url}/articulos`);
    }
 }

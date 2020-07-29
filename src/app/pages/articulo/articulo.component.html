@@ -45,7 +45,8 @@ Formulario de ingreso
 
 
 	<div class="container">
-
+		<h2>{{currentAticulo.titulo}}</h2>
+		<img src="{{url}}/articulo/{{currentAticulo.url}}/{{currentAticulo.portada}}" class="py-3 img-fluid">
 		<div [innerHTML]="contenidoArticulo"></div>
 
 	</div>

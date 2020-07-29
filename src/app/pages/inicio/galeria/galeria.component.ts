@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GaleriaService } from '../../../services/galeria/galeria.service';
+import {Ruta} from '../../../config'
 
 declare var jQuery: any;
 declare var $: any;
@@ -12,14 +13,15 @@ declare var $: any;
 export class GaleriaComponent implements OnInit {
   images: any;
   renderImages: boolean = true;
+  url:string
 
   constructor(private galeriaService: GaleriaService) {
-    
+    this.url = Ruta.url;    
   }
 
   ngOnInit(): void {
     this.galeriaService.getImages().subscribe((res) => {
-      this.images = res;
+      this.images = res['data'];      
     });
   }
 

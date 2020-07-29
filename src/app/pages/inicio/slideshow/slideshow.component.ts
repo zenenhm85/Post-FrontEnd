@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {SlideshowService} from '../../../services/slideshow/slideshow.service'
+import {SlideshowService} from '../../../services/slideshow/slideshow.service';
+import {Ruta} from '../../../config';
 
 declare var jQuery: any;
 declare var $: any;
@@ -12,16 +13,17 @@ declare var $: any;
 export class SlideshowComponent implements OnInit {
   slides:any
   renderSlides:boolean = true;
+  url:string;
 
   constructor(private slideshowService: SlideshowService) {
-    
+    this.url = Ruta.url;    
   }
 
   ngOnInit(): void {
     this.slideshowService.getSlideshow().subscribe(res=>{
-      this.slides = res;        
+      this.slides = res['data'];                
     }) 
-  }
+  }  
   callback(){
     if(this.renderSlides){
       this.renderSlides = false;

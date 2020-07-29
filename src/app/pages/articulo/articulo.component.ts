@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticulosService } from '../../services/articulos/articulos.service';
 import { UsuarioService } from '../../services/usuario/usuario.service';
-import { NgForm } from '@angular/forms';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+import {Ruta} from '../../config';
 
 @Component({
   selector: 'app-articulo',
@@ -11,6 +10,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
   styleUrls: ['./articulo.component.css'],
 })
 export class ArticuloComponent implements OnInit {
+  url:string;
   contenidoArticulo: any;
   currentAticulo: any;
   articulos: any;
@@ -26,9 +26,10 @@ export class ArticuloComponent implements OnInit {
     articuloService: ArticulosService,
     usuarioService:UsuarioService
   ) {
+    this.url = Ruta.url;
     this.usuarioService = usuarioService;
     articuloService.getArticulos().subscribe((res) => {
-      this.articulos = res;
+      this.articulos = res['data'];
       this.currentAticulo = this.articulos.find((item) => {
         return item.url == activateRoute.snapshot.params['id'];
       });

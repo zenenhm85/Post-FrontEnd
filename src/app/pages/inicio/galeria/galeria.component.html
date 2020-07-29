@@ -10,8 +10,8 @@
   <section class="pinterest_grid">
     <article class="white-panel" *ngFor="let foto of images; let ultimoIndice = last"> 
 
-      <a href="{{foto.foto}}" data-toggle="lightbox" data-gallery="example-gallery">
-        <img src="{{foto.foto}}">
+      <a href="{{url}}/galeria/img/{{foto.foto}}" data-toggle="lightbox" data-gallery="example-gallery">
+        <img src="{{url}}/galeria/img/{{foto.foto}}">
       </a>
 
       {{ ultimoIndice ? callback() : ""}}
