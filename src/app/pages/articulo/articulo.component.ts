@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticulosService } from '../../services/articulos/articulos.service';
 import { UsuarioService } from '../../services/usuario/usuario.service';
-import {Ruta} from '../../config';
+import { Ruta } from '../../config';
 
 @Component({
   selector: 'app-articulo',
@@ -10,22 +10,27 @@ import {Ruta} from '../../config';
   styleUrls: ['./articulo.component.css'],
 })
 export class ArticuloComponent implements OnInit {
-  url:string;
+  noLogin: boolean = false;
+  mensaje:string = '';
+  url: string;
   contenidoArticulo: any;
   currentAticulo: any;
   articulos: any;
-  usuarioService:UsuarioService;
-  usuarios:any;
-  usuario: string;
-  password: string;
+  usuarioService: UsuarioService;
+  usuarios: any;
+  usuario: any;
   login: boolean = false;
-  validarLogin:boolean = true;
+  validarLogin: boolean = true;
 
   constructor(
     activateRoute: ActivatedRoute,
     articuloService: ArticulosService,
-    usuarioService:UsuarioService
+    usuarioService: UsuarioService
   ) {
+    this.usuario = {
+      usuario: null,
+      password: null,
+    };
     this.url = Ruta.url;
     this.usuarioService = usuarioService;
     articuloService.getArticulos().subscribe((res) => {
@@ -39,25 +44,19 @@ export class ArticuloComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(){
-    let currentUser:boolean = true;
-    this.usuarioService.getUsuarios().subscribe(res=>{
-      this.usuarios = res;
-
-      currentUser = this.usuarios.find(item=>{
-        if(item.usuario == this.usuario && item.password == this.password){
-          return true;
-        }else{
-          return false;
-        }
-      });
-      if(currentUser){
+  onSubmit() {
+    
+    this.usuarioService.loginUsuario(this.usuario).subscribe((res) => {
+      if (res['status'] == 200) {
         this.login = true;
-        
       }
       else{
-        this.validarLogin = false;
-      }      
-    })        
+        this.noLogin = true;
+        this.mensaje = res['mensaje'];
+        setTimeout(()=>{
+          this.noLogin = false;          
+        },3000);
+      }
+    });
   }
 }

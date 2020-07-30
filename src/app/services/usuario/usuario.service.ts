@@ -10,10 +10,11 @@ export class UsuarioService {
   constructor(private http: HttpClient) {
     this.url = Ruta.url;
    }
-   getUsuarios(){
-     return this.http.get(this.url);
-   }
+   
    crearUsuario(usuario){
     return this.http.post(`${this.url}/usuario`,usuario);
+  }
+  loginUsuario(usuario){
+    return this.http.post(`${this.url}/usuario/login`,usuario);
   }
 }

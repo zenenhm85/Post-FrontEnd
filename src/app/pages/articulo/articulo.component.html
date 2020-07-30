@@ -10,7 +10,7 @@ Formulario de ingreso
 
 		<div class="form-group">
 			
-			<input type="text" class="form-control mt-3" placeholder="Usuario" name="usuarioLogin" [(ngModel)]="usuario" pattern="(?=.*[A-Za-z]).{2,10}" #usuarioLogin="ngModel" required>
+			<input type="text" class="form-control mt-3" placeholder="Usuario" name="usuarioLogin" [(ngModel)]="usuario.usuario" pattern="(?=.*[A-Za-z]).{2,10}" #usuarioLogin="ngModel" required>
 
 			<div *ngIf="!usuarioLogin.valid && usuarioLogin.touched" class="invalid-feedback">Error en el campo de usuario</div>
 
@@ -20,12 +20,15 @@ Formulario de ingreso
 
 		<div class="form-group">
 			
-			<input type="password" class="form-control mt-3" placeholder="Contraseña" name="passwordLogin" [(ngModel)]="password" #passwordLogin="ngModel" required>
+			<input type="password" class="form-control mt-3" placeholder="Contraseña" name="passwordLogin" [(ngModel)]="usuario.password" #passwordLogin="ngModel" required>
 			<div *ngIf="passwordLogin.errors?.required && passwordLogin.touched" class="invalid-feedback">Este campo es obligatorio</div>
 
 		</div>
 
 		<div *ngIf="!validarLogin" class="alert alert-danger">Usuario o contraseña no válidos</div>
+		<div *ngIf="noLogin" class="alert alert-danger" role="alert">
+			{{mensaje}}
+		</div>
 
 		<button [disabled]="!f.valid" class="btn btn-lg btn-primary btn-block mt-3">Ingresar</button>		
 
